@@ -1,2 +1,2 @@
 # my_final_project
-My final project for course "Автоматизация тестировани с помощью Selenium и Python"
+My final project for course "Автоматизация тестирования с помощью Selenium и Python"
