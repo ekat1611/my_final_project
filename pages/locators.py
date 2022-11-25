@@ -13,3 +13,14 @@ class LoginPageLocators:
     REGISTRATION_PASSWORD = (By.CSS_SELECTOR, '#id_registration-password1')
     REGISTRATION_REPEAT_PASSWORD = (By.CSS_SELECTOR, '#id_registration-password2')
     REGISTRATION_SUBMIT = (By.CSS_SELECTOR, '[name = \'registration_submit\']')
+
+
+class ProductPageLocators:
+    BUTTON_ADD_TO_THE_BASKET = (By.CSS_SELECTOR, '.btn-add-to-basket')
+    ITEM_NAME = (By.CSS_SELECTOR, ".product_main h1")
+    ITEM_PRICE = (By.CSS_SELECTOR, ".price_color")
+
+
+class BasketPageLocators:
+    ITEM_NAME_IN_THE_BASKET = (By.CSS_SELECTOR, ".alert:nth-child(1) .alertinner strong")
+    ITEM_PRICE_IN_THE_BASKET = (By.CSS_SELECTOR, ".alertinner  p strong")
