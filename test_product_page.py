@@ -1,6 +1,17 @@
 import pytest
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 from time import sleep
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'
+    page = ProductPage(browser, link)
+    page.open()
+    page_basket = BasketPage(browser, browser.current_url)
+    page_basket.go_to_the_basket_page()
+    page_basket.should_be_empty_basket()
+    page_basket.should_be_text_about_empty_basket()
 
 
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
@@ -16,7 +27,7 @@ from time import sleep
 def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
     page.open()
-    item_price, item_name, item_price_in_the_basket,  item_name_in_the_basket = page.add_item_to_the_basket()
+    page.add_item_to_the_basket()
 
 
 @pytest.mark.xfail

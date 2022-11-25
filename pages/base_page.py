@@ -15,6 +15,10 @@ class BasePage:
         self.url = url
         self.browser.implicitly_wait(timeout)
 
+    def go_to_the_basket_page(self):
+        basket_link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket_link.click()
+
     def go_to_login_page(self):
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
@@ -30,7 +34,7 @@ class BasePage:
 
     def is_element_present(self, how, what):
         try:
-            self.browser.find_element(how,what)
+            self.browser.find_element(how, what)
         except NoSuchElementException:
             return False
 
