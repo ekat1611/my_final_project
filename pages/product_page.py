@@ -7,6 +7,14 @@ class ProductPage(BasePage):
     def find_element_on_the_product_page(self, by, locator):
         return self.browser.find_element(by, locator).text
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_be_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message must be disappeared"
+
     def add_item_to_the_basket(self):
         button_add_to_the_basket = self.browser.find_element(*ProductPageLocators.BUTTON_ADD_TO_THE_BASKET)
         button_add_to_the_basket.click()
@@ -21,4 +29,5 @@ class ProductPage(BasePage):
         assert item_name_in_the_basket == item_name, f'Наименование товара в корзине не соответствует названию товара, ' \
                                                      f'ожидалось значение: {item_name}, получено ' \
                                                      f'{item_name_in_the_basket}'
+        return item_price, item_name, item_price_in_the_basket, item_name_in_the_basket
 

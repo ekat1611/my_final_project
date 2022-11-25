@@ -3,6 +3,7 @@ from .pages.product_page import ProductPage
 from time import sleep
 
 
+@pytest.mark.skip (reason = 'отладка последующих тестов')
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
@@ -16,6 +17,32 @@ from time import sleep
 def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
     page.open()
+    item_price, item_name, item_price_in_the_basket,  item_name_in_the_basket = page.add_item_to_the_basket()
+
+
+@pytest.mark.xfail
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'
+    page = ProductPage(browser, link)
+    page.open()
     page.add_item_to_the_basket()
+    page.should_not_be_success_message()
+
+
+def test_guest_cant_see_success_message(browser):
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_not_be_success_message()
+
+
+@pytest.mark.xfail
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0'
+    page = ProductPage(browser, link)
+    page.open()
+    page.add_item_to_the_basket()
+    page.should_be_is_disappeared()
+
 
 
