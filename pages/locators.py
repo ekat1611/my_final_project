@@ -18,9 +18,6 @@ class LoginPageLocators:
 class ProductPageLocators:
     BUTTON_ADD_TO_THE_BASKET = (By.CSS_SELECTOR, '.btn-add-to-basket')
     ITEM_NAME = (By.CSS_SELECTOR, ".product_main h1")
-    ITEM_PRICE = (By.CSS_SELECTOR, ".price_color")
-
-
-class BasketPageLocators:
+    ITEM_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
     ITEM_NAME_IN_THE_BASKET = (By.CSS_SELECTOR, ".alert:nth-child(1) .alertinner strong")
     ITEM_PRICE_IN_THE_BASKET = (By.CSS_SELECTOR, ".alertinner  p strong")

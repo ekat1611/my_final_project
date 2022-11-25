@@ -1,6 +1,6 @@
 import pytest
 from .pages.product_page import ProductPage
-from .pages.basket_page import BasketPage
+from time import sleep
 
 
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
@@ -16,8 +16,6 @@ from .pages.basket_page import BasketPage
 def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
     page.open()
-    item_price, item_name = page.add_item_to_the_basket()
-    basket_page = BasketPage(browser, browser.current_url)
-    basket_page.check_add_item_to_the_basket(item_price, item_name)
+    page.add_item_to_the_basket()
 
 
