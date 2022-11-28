@@ -8,6 +8,7 @@ class ProductPage(BasePage):
         return self.browser.find_element(by, locator).text
 
     def should_not_be_success_message(self):
+        print('Начинаю проверку наличия сообщения об успешном добавлении в корзину')
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
             "Success message is presented, but should not be"
 
@@ -16,6 +17,7 @@ class ProductPage(BasePage):
             "Success message must be disappeared"
 
     def add_item_to_the_basket(self):
+        print('Начинаю проверку на возможность добавления товара в корзину')
         button_add_to_the_basket = self.browser.find_element(*ProductPageLocators.BUTTON_ADD_TO_THE_BASKET)
         button_add_to_the_basket.click()
         self.solve_quiz_and_get_code()
