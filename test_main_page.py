@@ -4,7 +4,7 @@ from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
 
 
-# запуск тестов через pytest -v --tb=line test_main_page.py
+# запуск тестов через pytest -v --tb=line -m login_guest test_main_page.py
 @pytest.mark.login_guest
 class TestLoginFromMainPage:
     def test_check_login_page(self, browser):
